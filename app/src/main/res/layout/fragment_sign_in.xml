@@ -16,7 +16,7 @@
             android:id="@+id/card_signup"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="50dp"
             app:cardCornerRadius="16dp"
             android:elevation="3dp"
             android:layout_width="match_parent"
@@ -114,6 +114,9 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+
+    <TextView app:layout_constraintTop_toBottomOf="@id/card_signup" android:layout_width="match_parent" android:layout_height="30dp" android:id="@+id/text"/>
+
     <ImageButton
             android:tint="@android:color/black"
             android:padding="16dp"
@@ -122,10 +125,9 @@
             android:background="@drawable/circle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="76dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/text"
             android:layout_width="60dp"
-
+            android:id="@+id/signup_complete"
             android:layout_height="60dp"/>
 
 

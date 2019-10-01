@@ -12,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() , OnMapReadyCallback {
 
@@ -55,6 +57,18 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback {
         setContentView(R.layout.activity_main)
         val mapF = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapF.getMapAsync(this)
+        val places : ArrayList<MyPlace> = ArrayList()
+        places.add(MyPlace(MyLatLng(3.3,3.5),"Hello"))
+        places.add(MyPlace(MyLatLng(3.3,3.5),"How"))
+        places.add(MyPlace(MyLatLng(3.3,3.5),"Are"))
+        places.add(MyPlace(MyLatLng(3.3,3.5),"U"))
+        places.add(MyPlace(MyLatLng(3.3,3.5),"Abdallah"))
+        places.add(MyPlace(MyLatLng(3.3,3.5),"Herzallah"))
+        places.add(MyPlace(MyLatLng(3.3,3.5),"In"))
+        places.add(MyPlace(MyLatLng(3.3,3.5),"Yassir"))
+        val adapter = PlacesAdapter(places,this)
+        places_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        places_rv.adapter = adapter
 
     }
 

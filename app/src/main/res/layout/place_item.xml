@@ -3,17 +3,41 @@
         android:layout_width="100dp"
         android:layout_height="120dp"
         app:cardCornerRadius="10dp"
+        android:layout_marginStart="8dp"
         app:cardBackgroundColor="#303030"
         xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+    <LinearLayout
+            android:background="@drawable/borderimage"
+            android:orientation="vertical"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <ImageView
-                android:background="@color/colorAccent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/image"
                 android:src="@color/colorAccent"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"/>
-    </RelativeLayout>
+        <TextView
+                android:layout_marginTop="4dp"
+                android:paddingStart="8dp"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:text="Title"
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"/>
+        <TextView
+                android:paddingStart="8dp"
+                android:textSize="10sp"
+                android:textColor="@android:color/white"
+                android:text="Title"
+                android:id="@+id/post_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"/>
+    </LinearLayout>
 
 </com.google.android.material.circularreveal.cardview.CircularRevealCardView>

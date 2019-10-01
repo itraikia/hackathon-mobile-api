@@ -11,7 +11,7 @@ class SplachActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splach)
         Handler().postDelayed({
-            startActivity(Intent(this , MainActivity::class.java))
+            startActivity(Intent(this , AuthActivity::class.java))
             finish()
         } , 2000)
     }
