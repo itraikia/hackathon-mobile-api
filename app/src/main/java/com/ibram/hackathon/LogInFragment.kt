@@ -25,10 +25,19 @@ class LogInFragment : Fragment() {
         view.login.setOnClickListener {
             val username = view.user.text.toString().trim()
             val password = view.pass.text.toString().trim()
-            startActivity(Intent(activity , MainActivity::class.java))
-            activity!!.finish()
+
+            val loginRequest = LoginRequest(this)
+            loginRequest.execute(username,password)
         }
         return view
+    }
+
+
+    fun auth(token : String ){
+        val intent = Intent(activity , MainActivity::class.java)
+        intent.putExtra("token" , token)
+        startActivity(intent)
+        activity!!.finish()
     }
 
 

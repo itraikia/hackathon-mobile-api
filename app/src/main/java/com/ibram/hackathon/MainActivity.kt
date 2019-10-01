@@ -3,6 +3,7 @@ package com.ibram.hackathon
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.drawable.BitmapDrawable
 import android.location.Location
@@ -20,11 +21,15 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.activity_main.*
+import android.os.StrictMode
+
+
 
 class MainActivity : AppCompatActivity() , OnMapReadyCallback {
 
     private var locationManager : LocationManager? = null
     private lateinit var googleMapI : GoogleMap
+    private var token : String = ""
 
     @SuppressLint("MissingPermission")
     override fun onMapReady(p0: GoogleMap?) {
@@ -50,11 +55,24 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback {
         }
 
 
+        add.setOnClickListener {
+
+            val inttt = Intent(this , FormulaireActivity::class.java)
+            inttt.putExtra("token" , token)
+            inttt.putExtra("place" , MyLatLng(googleMapI.cameraPosition.target.latitude,googleMapI.cameraPosition.target.longitude))
+            startActivity(inttt)
+        }
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+            StrictMode.setThreadPolicy(policy)
+        }
+        token = intent.extras["token"].toString()
         val mapF = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapF.getMapAsync(this)
         val places : ArrayList<MyPlace> = ArrayList()
@@ -69,6 +87,7 @@ class MainActivity : AppCompatActivity() , OnMapReadyCallback {
         val adapter = PlacesAdapter(places,this)
         places_rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         places_rv.adapter = adapter
+
 
     }
 

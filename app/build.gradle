@@ -40,4 +40,5 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.0.0'
     def picassoVersion = "2.71828"
     implementation "com.squareup.picasso:picasso:$picassoVersion"
+    implementation 'com.github.angads25:toggle:1.0.0'
 }

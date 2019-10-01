@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_log_in.*
 import kotlinx.android.synthetic.main.fragment_log_in.view.*
 import kotlinx.android.synthetic.main.fragment_log_in.view.signup
 import kotlinx.android.synthetic.main.fragment_sign_in.view.*
@@ -25,12 +26,19 @@ class SignInFragment : Fragment() {
             val phone = view.phone.text.toString().trim()
             val email = view.email.text.toString().trim()
             val password = view.password.text.toString().trim()
-
-            startActivity(Intent(activity , MainActivity::class.java))
-            activity!!.finish()
+            val signupRequest = SignupRequest(this)
+            signupRequest.execute(username,phone,email,password)
         }
         return view
     }
+
+    fun auth(token : String ){
+        val intent = Intent(activity , MainActivity::class.java)
+        intent.putExtra("token" , token)
+        startActivity(intent)
+        activity!!.finish()
+    }
+
 
 
 }
